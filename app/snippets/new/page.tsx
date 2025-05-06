@@ -1,5 +1,6 @@
 import { db } from '@/db';
 import { redirect } from 'next/navigation';
+import notFound from '../not-found';
 
 export default function SnippetCreatePage() {
   //
@@ -23,6 +24,8 @@ export default function SnippetCreatePage() {
     //   Redirect the user back to the root route
     redirect('/');
   }
+
+  notFound();
 
   return (
     <form action={createSnippet}>
