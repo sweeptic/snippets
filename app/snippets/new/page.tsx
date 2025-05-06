@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { redirect } from 'next/navigation';
-import notFound from '../not-found';
+import notFound from '../[id]/not-found';
 
 export default function SnippetCreatePage() {
   //
