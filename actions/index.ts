@@ -37,13 +37,23 @@ export async function createSnippet(formState: { message: string }, formData: Fo
     return { message: 'Code must be longer' };
   }
   // Create a new record in the database
-  const snippet = await db.snippet.create({
-    data: {
-      title,
-      code,
-    },
-  });
-  console.log(snippet);
+
+  try {
+    const snippet = await db.snippet.create({
+      data: {
+        title,
+        code,
+      },
+    });
+    console.log(snippet);
+    // redirect('/'); catching the catch block...
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return { message: error.message };
+    } else {
+      return { message: 'Something went wrong...' };
+    }
+  }
 
   //   Redirect the user back to the root route
   redirect('/');
