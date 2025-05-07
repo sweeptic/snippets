@@ -41,14 +41,15 @@ export default function SnippetCreatePage() {
           </label>
           <input name="title" className="border rounded p-2 w-full" id="title" />
         </div>
-
         <div className="flex gap-4">
           <label className="w-12" htmlFor="code">
             Code
           </label>
           <textarea name="code" className="border rounded p-2 w-full" id="code" />
         </div>
-        <div>{formState.message}</div>
+        {formState.message ? (
+          <div className="my-2 p-2 bg-red-700 rounded border-red-400">{formState.message}</div>
+        ) : null}
         <button type="submit" className="border rounded p-2 ">
           Create
         </button>
