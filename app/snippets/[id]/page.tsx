@@ -1,6 +1,7 @@
 import { db } from '@/db';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import * as actions from '@/actions';
 
 interface SnippetShowPageProps {
   params: {
@@ -15,7 +16,10 @@ export default async function SnippetShowPage(props: SnippetShowPageProps) {
     setTimeout(resolve, 1000);
   });
 
-  const snippet = await db.snippet.findFirst({ where: { id: parseInt(id) } });
+  const parsedInt = parseInt(id);
+
+  const snippet = await db.snippet.findFirst({ where: { id: parsedInt } });
+  const deleteSnippetaction = actions.deleteSnippet.bind(null, parsedInt);
 
   if (!snippet) {
     return notFound();
@@ -29,7 +33,9 @@ export default async function SnippetShowPage(props: SnippetShowPageProps) {
           <Link href={`/snippets/${snippet.id}/edit`} className="p-2 border rounded">
             Edit
           </Link>
-          <button className="p-2 border rounded">Delete</button>
+          <form action={deleteSnippetaction}>
+            <button className="p-2 border rounded">Delete</button>
+          </form>
         </div>
       </div>
       <pre className="p-3 border rounded bg-amber-600 ">
