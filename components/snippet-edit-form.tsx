@@ -15,13 +15,23 @@ export default function SnippetEditForm({ snippet }: SnippetEditFormProps) {
   function handleEditorChange(value: string = '') {
     console.log('here is the current model value:', value);
     setCode(value);
-    actions.editSnippet();
   }
+
+  //   const editSnippetaction = () => {
+  //     actions.editSnippet(snippet.id, code);
+  //   };
+
+  const editSnippetaction = actions.editSnippet.bind(null, snippet.id, code);
 
   return (
     <div>
       Client Component with {snippet.title}
       <Editor height="40vh" defaultLanguage="javascript" defaultValue={snippet.code} onChange={handleEditorChange} />
+      <form action={editSnippetaction}>
+        <button className="mt-2 p-2 border rounded" type="submit">
+          Save
+        </button>
+      </form>
     </div>
   );
 }
