@@ -2,14 +2,15 @@ import { db } from '@/db';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import * as actions from '@/actions';
+import { PageProps } from '@/.next/types/app/page';
 
-interface SnippetShowPageProps {
-  params: {
-    id: string;
-  };
-}
+// interface SnippetShowPageProps {
+//   params: {
+//     id: string;
+//   };
+// }
 
-export default async function SnippetShowPage(props: SnippetShowPageProps) {
+export default async function SnippetShowPage(props: PageProps) {
   const { id } = await props.params;
 
   await new Promise((resolve) => {

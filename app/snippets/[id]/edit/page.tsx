@@ -1,14 +1,16 @@
+import { PageProps } from '@/.next/types/app/page';
 import SnippetEditForm from '@/components/snippet-edit-form';
 import { db } from '@/db';
 import { notFound } from 'next/navigation';
 
-interface SnippetEditPageProps {
-  params: {
-    id: string;
-  };
-}
+// interface SnippetEditPageProps {
+//   params: {
+//     id: string;
+//   };
+// }
 
-export default async function SnippetEditPage(props: SnippetEditPageProps) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function SnippetEditPage(props: PageProps) {
   const { id } = await props.params;
 
   const parsedInt = parseInt(id);
