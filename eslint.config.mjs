@@ -9,8 +9,9 @@
 //   baseDirectory: __dirname,
 // });
 
-// const eslintConfig = [
-//   ...compat.extends("next/core-web-vitals", "next/typescript"),
-// ];
+const eslintConfig = [
+  //   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {},
+];
 
-// export default eslintConfig;
+export default eslintConfig;

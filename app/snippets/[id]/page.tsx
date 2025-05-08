@@ -20,6 +20,8 @@ export default async function SnippetShowPage(props: PageProps) {
   const parsedInt = parseInt(id);
 
   const snippet = await db.snippet.findFirst({ where: { id: parsedInt } });
+  console.log('show snippet - db.snippet.findFirst', id);
+
   const deleteSnippetaction = actions.deleteSnippet.bind(null, parsedInt);
 
   if (!snippet) {

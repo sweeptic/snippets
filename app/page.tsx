@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 export default async function Home() {
   const snippets = await db.snippet.findMany();
+  console.log('load snippets - db.snippet.findMany');
 
   const renderedSnippets = snippets.map((snippet) => {
     return (

@@ -17,6 +17,8 @@ export default async function SnippetEditPage(props: PageProps) {
 
   const snippet = await db.snippet.findFirst({ where: { id: parsedInt } });
 
+  console.log('load snippet - db.snippet.findFirst', id);
+
   if (!snippet) {
     notFound();
   }
